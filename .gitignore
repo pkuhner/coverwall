@@ -1,0 +1,12 @@
+.cache*
+.env
+
+*.png
+!output/
+output/*
+!output/img/
+
+
+__pycache__/
+*.py[cod]
+*$py.class

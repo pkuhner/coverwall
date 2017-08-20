@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>pcksr.net</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css" media="all">
+</head>
+<body>
+  <header id="header">
+    <div class="logo">
+      <a href="https://twitter.com/Nothyp"><img src="avatar.jpg" alt="Avatar"></a>
+    </div>
+  </header>
+
+  <main>
+    {% for album in albums %}
+      <div class="album">
+        <img src="{{ album.cover }}" alt="{{ album.name }} cover">
+        <div class="overlay">
+          <p><span class="bold">{{ album.artist }}</span> <br /> {{ album.name }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </main>
+
+  <footer id="footer" class="center">
+    <p>2017.</p>
+  </footer>
+</body>
+</html>

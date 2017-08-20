@@ -1,0 +1,53 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "a2bb34e021ed446d988381e1b1b9466e4cb20c8e720ec0f77b283bdcdc470a0f"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "certifi": {
+            "version": "==2017.7.27.1"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "click": {
+            "version": "==6.7"
+        },
+        "gevent": {
+            "version": "==1.2.2"
+        },
+        "greenlet": {
+            "version": "==0.4.12"
+        },
+        "grequests": {
+            "version": "==0.3.0"
+        },
+        "idna": {
+            "version": "==2.6"
+        },
+        "jinja2": {
+            "version": "==2.9.6"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "requests": {
+            "version": "==2.18.4"
+        },
+        "spotipy": {
+            "version": "==2.4.4"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        }
+    },
+    "develop": {}
+}
