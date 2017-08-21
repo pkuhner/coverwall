@@ -7,13 +7,13 @@ It looks like a wall of covers, hence the name 🙂
 
 ## Dependencies
 
-```
+```shellsession
 $ pip install -r requirements.txt
 ```
 
 Or, if you're familiar with [`Pipenv`](https://github.com/kennethreitz/pipenv/):
 
-```
+```shellsession
 $ pipenv install --three
 ```
 
@@ -21,7 +21,7 @@ $ pipenv install --three
 
 You need to register an app on the [Spotify Developer website](https://developer.spotify.com/my-applications/#!/applications), then set environment variables with your credentials:
 
-```
+```shellsession
 export SPOTIPY_CLIENT_ID='your-spotify-client-id'
 export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
 export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
@@ -29,7 +29,7 @@ export SPOTIPY_REDIRECT_URI='your-app-redirect-url'
 
 You can also paste this in an `.env` file and `source` it before running the script.
 
-```
+```shellsession
 $ python coverwall.py --help
 Usage: coverwall.py [OPTIONS] USER
 
@@ -43,7 +43,7 @@ Options:
 
 ### Example
 
-```
+```shellsession
 $ python coverwall.py nothyp --template template-ghost.html
 ```
 
