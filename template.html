@@ -12,18 +12,18 @@
       <a href="https://twitter.com/Nothyp"><img src="avatar.jpg" alt="Avatar"></a>
     </div>
   </header>
-
   <main>
+    <ul class="album-list"><!--
     {% for album in albums %}
-      <div class="album">
-        <img src="{{ album.cover }}" alt="{{ album.name }} cover">
-        <div class="overlay">
-          <p><span class="bold">{{ album.artist }}</span> <br /> {{ album.name }}</p>
-        </div>
-      </div>
+        --><li>
+        <figure>
+          <img src="{{ album.cover }}" alt="{{ album.name }} cover">
+          <figcaption><p><strong>{{ album.artist }}</strong> <br /> {{ album.name }}</p></figcaption>
+        </figure>
+      </li><!--
     {% endfor %}
+    --></ul>
   </main>
-
   <footer id="footer" class="center">
     <p>2017.</p>
   </footer>
