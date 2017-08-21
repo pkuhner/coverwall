@@ -47,6 +47,18 @@ Options:
 $ python coverwall.py nothyp --template template-ghost.html
 ```
 
+## Note on using the Ghost template
+
+In order to use the Ghost template, you first need to create a static post with no content, only a title.
+Then, you need to copy the generated `index.html` as `page-PostName.hbs` in `<GHOST_FOLDER>/content/themes/<YOUR_THEME>/`, where `PostName` is the title of your static post. For instance:
+
+```shellsession
+$ cp output/index.html /var/www/ghost/content/themes/casper/page-music.hbs
+```
+Thanks to [Christos Matskas](https://cmatskas.com/create-a-static-page-with-custom-layout-in-ghost/) for this tip.
+
+Obviously, you also need to copy the `styles.css` file to the corresponding, for instance `/var/www/ghost/content/themes/casper/assets/built/music.css`.
+
 ## License
 
 This project is licensed under the MIT License, see the LICENSE file for details.
