@@ -117,9 +117,10 @@ def render(albums, output_file, tpl_file):
 @click.command()
 @click.option('--template', default=False, help='Jinja2 template file')
 @click.option('--images', default=False, help='Download images locally in specified folder')
+@click.option('--no-download', is_flag=True, help='Disable image downloading')
 @click.option('--log', is_flag=True, help='Show logging information')
 @click.argument('user')
-def main(template, images, log, user):
+def main(template, images, no_download, log, user):
     logger = logging.getLogger()
     handler = logging.StreamHandler()
     formatter = logging.Formatter(
@@ -155,7 +156,7 @@ def main(template, images, log, user):
     sp = auth(user, scope)
     albums = query_albums(sp, NUMBER_OF_ALBUMS, LIMIT)
 
-    if DOWNLOAD_IMAGES:
+    if not no_download:
         logging.info('Downloading cover images')
         img_nb = download_images(albums, images_folder, IMAGES_EXT)
 
