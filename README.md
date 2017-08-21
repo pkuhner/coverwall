@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
-This tool generates an HTML page with your Spotify library cover albums.
+This tool generates an HTML page with your Spotify library album covers.
 It looks like a wall of covers, hence the name 🙂
 
 ## Dependencies
