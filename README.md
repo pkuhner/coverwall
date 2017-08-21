@@ -11,7 +11,7 @@ It looks like a wall of covers, hence the name 🙂
 $ pip install -r requirements.txt
 ```
 
-Or, if you're familiar with [`Pipenv`](https://github.com/kennethreitz/pipenv/):
+Or, if you're familiar with [`pipenv`](https://github.com/kennethreitz/pipenv/):
 
 ```shellsession
 $ pipenv install --three
