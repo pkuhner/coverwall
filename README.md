@@ -24,6 +24,8 @@ $ python coverwall.py --help
 Usage: coverwall.py [OPTIONS] USER
 
 Options:
-  --log   Show logging information
-  --help  Show this message and exit.
+  --template TEXT  Jinja2 template file
+  --images TEXT    Download images locally in specified folder
+  --log            Show logging information
+  --help           Show this message and exit.
 ```
