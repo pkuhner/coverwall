@@ -5,7 +5,7 @@
 !output/
 output/*
 !output/img/
-
+!output/styles.css
 
 __pycache__/
 *.py[cod]
