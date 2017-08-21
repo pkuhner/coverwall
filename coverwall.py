@@ -115,9 +115,11 @@ def render(albums, output_file, tpl_file):
 
 
 @click.command()
+@click.option('--template', default=False, help='Jinja2 template file')
+@click.option('--images', default=False, help='Download images locally in specified folder')
 @click.option('--log', is_flag=True, help='Show logging information')
 @click.argument('user')
-def main(log, user):
+def main(template, images, log, user):
     logger = logging.getLogger()
     handler = logging.StreamHandler()
     formatter = logging.Formatter(
@@ -130,6 +132,24 @@ def main(log, user):
     else:
         logger.setLevel(logging.WARNING)
 
+    if images:
+        if not os.path.isdir(images):
+            logging.error('Image folder does not exist: %s' % (images, ))
+            raise OSError('Image folder does not exist: %s' % (images, ))
+
+        if not images.endswith('/'):
+            images += ('/')
+        images_folder = images
+    else:
+        images_folder = IMAGES_FOLDER
+
+    if template:
+        if not os.path.isfile(template):
+            logging.error('Template does not exist: %s' % (template, ))
+            raise OSError('Template does not exist: %s' % (template, ))
+    else:
+        template = TEMPLATE
+
     scope = "user-library-read"
 
     sp = auth(user, scope)
@@ -137,9 +157,9 @@ def main(log, user):
 
     if DOWNLOAD_IMAGES:
         logging.info('Downloading cover images')
-        img_nb = download_images(albums, IMAGES_FOLDER, IMAGES_EXT)
+        img_nb = download_images(albums, images_folder, IMAGES_EXT)
 
-    render(albums, OUTPUT_HTML, TEMPLATE)
+    render(albums, OUTPUT_HTML, template)
 
     logging.info('Retrieved %d albums and %d images.' % (len(albums), img_nb))
 
