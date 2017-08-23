@@ -7,6 +7,11 @@ It looks like a wall of covers, hence the name 🙂
 
 ## Dependencies
 
+- [Spotipy](https://github.com/plamere/spotipy) to query the [Spotify API](https://developer.spotify.com/web-api/)
+- [Grequests](https://github.com/kennethreitz/grequests) to download album covers
+- [Click](http://click.pocoo.org) for the command line interface
+- [Jinja2](http://jinja.pocoo.org) for templating
+
 ```shellsession
 $ pip install -r requirements.txt
 ```
