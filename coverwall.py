@@ -57,14 +57,28 @@ def auth(username, scope):
     return sp
 
 
-def query_albums(sp, n, limit):
+def query_albums(sp, n, limit, playlist_id=False):
+    """
+    Returns a list containing albums. Albums are dict containing the artist, album's name and the URL of the cover image.
+    If a playlist ID is given we get the playlist's tracks, otherwise we query the user's library.
+
+    n is the maximal number of albums to query.
+    limit is the number of albums to query per request (Spotify API's limit is 50).
+    """
+
     albums = []
     results = {"items": []}
     limit = min(n, limit)
 
-    for i in range(0, int(n / limit)):
-        result = sp.current_user_saved_tracks(limit=limit, offset=i * limit)
-        results["items"] += result["items"]
+    if playlist_id:
+        user_id = sp.me()["id"]
+        logging.info('Retrieving albums from playlist: %s' % (playlist_id, ))
+        results["items"] += sp.user_playlist(user_id, playlist_id)['tracks']['items']
+    else:
+        logging.info('Retrieving albums from user\'s library')
+        for i in range(0, int(n / limit)):
+            result = sp.current_user_saved_tracks(limit=limit, offset=i * limit)
+            results["items"] += result["items"]
 
     for i, item in enumerate(results["items"]):
         artist = item['track']['artists'][0]['name']
@@ -119,8 +133,9 @@ def render(albums, output_file, tpl_file):
 @click.option('--images', default=False, help='Download images locally in specified folder')
 @click.option('--no-download', is_flag=True, help='Disable image downloading')
 @click.option('--log', is_flag=True, help='Show logging information')
+@click.option('--playlist', default=False, help='Playlist ID instead of user\'s library')
 @click.argument('user')
-def main(template, images, no_download, log, user):
+def main(template, images, no_download, log, playlist, user):
     logger = logging.getLogger()
     handler = logging.StreamHandler()
     formatter = logging.Formatter(
@@ -154,7 +169,7 @@ def main(template, images, no_download, log, user):
     scope = "user-library-read"
 
     sp = auth(user, scope)
-    albums = query_albums(sp, NUMBER_OF_ALBUMS, LIMIT)
+    albums = query_albums(sp, NUMBER_OF_ALBUMS, LIMIT, playlist)
 
     if not no_download:
         logging.info('Downloading cover images')
