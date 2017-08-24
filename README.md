@@ -43,6 +43,7 @@ Options:
   --images TEXT    Download images locally in specified folder
   --no-download    Disable image downloading
   --log            Show logging information
+  --playlist TEXT  Playlist ID instead of user's library
   --help           Show this message and exit.
 ```
 
