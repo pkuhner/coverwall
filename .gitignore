@@ -1,5 +1,6 @@
 .cache*
 .env
+.idea
 
 *.png
 !output/
